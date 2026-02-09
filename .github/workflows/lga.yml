@@ -1,0 +1,12 @@
+name: learn-github-actions
+on: push
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-lastest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setupsnode@v4
+        with:
+          node-version: '20'
+      - run: npm i -g bates
+      - run: bats -v
