@@ -1,0 +1,17 @@
+name: Pull or push
+on: [push, pull_request]
+
+jobs:
+  push_msg:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "C'est un push"
+        run: echo "C'est un push"
+
+  pull_msg:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "C'est une pull request !"
+        run: echo "C'est une pull request !"
