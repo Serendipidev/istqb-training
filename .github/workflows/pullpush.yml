@@ -2,14 +2,19 @@ name: Pull Request Workflow
 
 on: [push, pull_request]
 
+env:
+  NAME: ${{ github.event_name }}
+  PUSH_MSG: "C'est un push !"
+  PULL_MSG: "C'est une pull request !"
+
 jobs:
   check-event:
     runs-on: ubuntu-latest
     steps:
       - name: Conditional step for pull requests
-        if: ${{ github.event_name == 'pull_request' }}
-        run: echo "C'est une pull request !"
+        if: ${{ env.NAME == 'pull_request' }}
+        run: echo ${PULL_MSG}
 
       - name: Conditional step for pushes
-        if: ${{ github.event_name == 'push' }}
-        run: echo "C'est un push !"
+        if: ${{ env.NAME == 'push' }}
+        run: echo ${PUSH_MSG}
