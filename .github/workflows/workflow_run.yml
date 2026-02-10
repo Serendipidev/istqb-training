@@ -1,0 +1,12 @@
+name: Workflow Run
+on:
+  workflow_run:
+    workflows: [merge_on_pr]
+    types: [completed]
+
+jobs:
+  msg-on-workflow-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display message
+        run: echo "Workflow run completed"
