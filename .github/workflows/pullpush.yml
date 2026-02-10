@@ -8,8 +8,8 @@ jobs:
     steps:
       - name: Conditional step for pull requests
         if: ${{ github.event_name == 'pull_request' }}
-        run: echo "This step runs only for pull requests."
+        run: echo "C'est une pull request !"
 
       - name: Conditional step for pushes
         if: ${{ github.event_name == 'push' }}
-        run: echo "This step runs only for pushes."
+        run: echo "C'est un push !"
