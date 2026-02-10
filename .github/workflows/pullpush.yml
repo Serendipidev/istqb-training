@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Conditional step for pull requests
         if: ${{ env.NAME == 'pull_request' }}
-        run: echo ${PULL_MSG}
+        run: echo "C'est une pull request !"
 
       - name: Conditional step for pushes
         if: ${{ env.NAME == 'push' }}
-        run: echo ${PUSH_MSG}
+        run: echo "C'est un push !"
