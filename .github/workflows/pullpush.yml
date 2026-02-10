@@ -4,6 +4,8 @@ on: [push, pull_request]
 
 env:
   NAME: ${{ github.event_name }}
+  PUSH_MSG: "C'est un push !"
+  PULL_MSG: "C'est une pull request !"
 
 jobs:
   check-event:
@@ -11,8 +13,8 @@ jobs:
     steps:
       - name: Conditional step for pull requests
         if: ${{ env.NAME == 'pull_request' }}
-        run: echo "C'est une pull request !"
+        run: echo ${PULL_MSG}
 
       - name: Conditional step for pushes
         if: ${{ env.NAME == 'push' }}
-        run: echo "C'est un push !"
+        run: echo ${PUSH_MSG}
