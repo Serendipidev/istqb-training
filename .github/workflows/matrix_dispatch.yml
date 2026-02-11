@@ -1,0 +1,17 @@
+name: Workflow Dispatch linked jobs
+
+on:
+  workflow_dispatch
+
+jobs:
+  print-message:
+    strategy:
+      fail-fast: true
+      matrix:
+        fruits: ["citron", "orange maltaise", "mangue"," papaye"]
+        prenoms: ["Donovan", "Raoul", "Le Mexicain"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print manual dispatch message
+        run: echo "${{matrix.prenoms}} mange un(e) ${{matrix.fruits}}, et il adore ça ! "
+
