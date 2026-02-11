@@ -14,7 +14,7 @@ jobs:
   print-message:
     runs-on: ubuntu-latest
     steps:
-      - name: Print manual dispatch message
+      - name: Print manual dispatch message test
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: echo "${{ github.event.inputs.message }}"
 
