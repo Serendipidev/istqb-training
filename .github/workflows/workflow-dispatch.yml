@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       message:
-        default: "This is a manual trigger message"
+        default: "This is a manual trigger message test"
   pull_request:
     types: [opened]
     branches:
