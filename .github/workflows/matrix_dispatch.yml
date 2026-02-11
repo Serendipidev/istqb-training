@@ -1,4 +1,4 @@
-name: Workflow Dispatch linked jobs
+name: Workflow Dispatch matrix
 
 on:
   workflow_dispatch
