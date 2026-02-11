@@ -14,7 +14,7 @@ jobs:
   print-message:
     runs-on: ubuntu-latest
     steps:
-      - name: Print manual dispatch message test
+      - name: Print manual dispatch message
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: echo "${{ github.event.inputs.message }}"
 
@@ -24,4 +24,4 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: pull_request opening message
-        run: echo "Pull request opened\:${{ github.event.pull_request.title }}"
+        run: echo "Pull request opened:${{ github.event.pull_request.title }}"
