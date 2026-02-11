@@ -1,17 +1,25 @@
 name: Workflow Dispatch
 
 on:
-  workflow_dispatch:
+    workflow_dispatch:
+      inputs:
+        message:
+          default: "This is a manual trigger message"
+    pull_request:
+      types: [opened]
+      branches:
+        - main
 
 jobs:
-  build:
+  print-message:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Manually triggered workflow"
+      - run: echo "${{ github.event.inputs.message }}"
 
-    deploy:
+    after-dispatch-message:
       runs-on: ubuntu-latest
-      needs: [build]
+      needs: [print-message]
+      if: github.event.name == "pull_request"
       steps:
-        - name: Deploy
-          run: echo "Deploying to ${{ github.event.inputs.environment }}"
+        - name: pull_request opening message
+          run: echo "Pull request opened: ${{ github.event.pull_request.title }}"
